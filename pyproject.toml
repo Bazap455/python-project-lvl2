@@ -3,6 +3,12 @@ name = "hexlet-code"
 version = "0.1.0"
 description = ""
 authors = ["Solenov <colenov@yandex.ru>"]
+packages = [
+    { include = "gendiff" },
+]
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
