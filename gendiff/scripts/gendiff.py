@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 
-import argparse
+from gendiff import cli
+from gendiff import engine
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate diff')
-    parser.add_argument('first_file')
-    parser.add_argument('second_file')
-    parser.add_argument('-f', '--format', help='see format of output')
-    args = parser.parse_args()
-    print(args.first_file, args.second_file)
+    args = cli.get_args()
+    engine.run(args)
 
 
 if __name__ == '__main__':
