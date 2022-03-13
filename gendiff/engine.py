@@ -9,7 +9,7 @@ def generate_diff(first_file, second_file, format=''):
     diff = []
 
     data_before = json.load(open(first_file))
-    data_after =  json.load(open(second_file))
+    data_after = json.load(open(second_file))
 
     keys_before = data_before.keys()
     keys_after = data_after.keys()
@@ -22,15 +22,30 @@ def generate_diff(first_file, second_file, format=''):
 
     for key in all_keys:
         template = '  {symbol} {key}: {value}'
-    
+
         if key in added_keys:
-            diff.append(template.format(symbol='+', key=key, value=data_after[key]))
+            diff.append(template.format(
+                symbol='+', key=key, value=data_after[key]
+                )
+            )
         elif key in deleted_keys:
-            diff.append(template.format(symbol='-', key=key, value=data_before[key]))
+            diff.append(template.format(
+                symbol='-', key=key, value=data_before[key]
+                )
+            )
         elif key in common_keys and (data_before[key] == data_after[key]):
-            diff.append(template.format(symbol=' ', key=key, value=data_before[key]))
+            diff.append(template.format(
+                symbol=' ', key=key, value=data_before[key]
+                )
+            )
         else:
-            diff.append(template.format(symbol='-', key=key, value=data_before[key]))
-            diff.append(template.format(symbol='+', key=key, value=data_after[key]))
+            diff.append(template.format(
+                symbol='-', key=key, value=data_before[key]
+                )
+            )
+            diff.append(template.format(
+                symbol='+', key=key, value=data_after[key]
+                )
+            )
 
     return '{\n' + '\n'.join(diff) + '\n}'
