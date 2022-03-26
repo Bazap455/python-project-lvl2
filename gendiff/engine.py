@@ -5,11 +5,11 @@ def run(args):
     print(generate_diff(args.first_file, args.second_file, format='string'))
 
 
-def generate_diff(first_file, second_file, format=''):
+def generate_diff(first_path, second_path, format=''):
     diff = []
 
-    data_before = json.load(open(first_file))
-    data_after = json.load(open(second_file))
+    data_before = json.load(open(first_path))
+    data_after = json.load(open(second_path))
 
     keys_before = data_before.keys()
     keys_after = data_after.keys()
