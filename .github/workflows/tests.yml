@@ -13,8 +13,10 @@ jobs:
         run: |
           pip install poetry
           poetry install
-      - uses: paambaati/codeclimate-action@v3.0.0
+      - name: test-&-publish-code-cov
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
-          CC_TEST_REPORTER_ID: 49da31e6225c0c4fe2da4db203d3e6e9f8b32f3d374ecbfaeead1f06b2c71a34
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: poetry run pytest -v --cov=gendiff --cov-report=xml
+          debug: true
