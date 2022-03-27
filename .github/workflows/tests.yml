@@ -13,5 +13,8 @@ jobs:
         run: |
           pip install poetry
           poetry install
-      - name: run-tests
-        run: poetry run pytest
+      - uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: 49da31e6225c0c4fe2da4db203d3e6e9f8b32f3d374ecbfaeead1f06b2c71a34
+        with:
+          coverageCommand: poetry run pytest -v --cov=gendiff --cov-report=xml
