@@ -1,4 +1,4 @@
-import json
+from gendiff.parsers import parse
 
 
 def run(args):
@@ -8,8 +8,8 @@ def run(args):
 def generate_diff(first_path, second_path, format=''):
     diff = []
 
-    data_before = json.load(open(first_path))
-    data_after = json.load(open(second_path))
+    data_before = parse(first_path)
+    data_after = parse(second_path)
 
     keys_before = data_before.keys()
     keys_after = data_after.keys()
