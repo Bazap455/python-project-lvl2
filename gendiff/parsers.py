@@ -8,11 +8,11 @@ def parse(file_path):
 
     if file_extension == '.json':
         data = json.load(open(file_path))
-    elif file_extension == '.yml' or '.yaml':
+    elif (file_extension == '.yml') or (file_extension == '.yaml'):
         stream = open(file_path, 'r')
         data = yaml.safe_load(stream)
         stream.close()
     else:
-        raise Exception('Format error')
+        raise Exception(UnboundLocalError)
 
     return data

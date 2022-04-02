@@ -17,4 +17,4 @@ lint:
 		poetry run flake8 gendiff
 
 run-tests:
-		poetry run pytest -v --cov=gendiff
+		poetry run pytest -v --cov=gendiff --cov-report term-missing

@@ -22,3 +22,11 @@ def test_generate_diff_yaml(expected_result):
         'tests/fixtures/file2.yaml',
     )
     assert diff == expected_result
+
+
+def test_generate_diff_json_yaml(expected_result):
+    diff = generate_diff(
+        'tests/fixtures/file1.json',
+        'tests/fixtures/file2.yaml',
+    )
+    assert diff == expected_result
